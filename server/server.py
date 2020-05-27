@@ -12,7 +12,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def get_page(self):
         res = BytesIO()
-        with open("./contents/main.html", "rb") as f:
+        with open("/server/contents/main.html", "rb") as f:
             while True:
                 buf = f.read(1024)
                 if buf: 
