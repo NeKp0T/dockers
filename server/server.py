@@ -7,8 +7,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b"qweqew\n")
-        # self.wfile.write(self.get_page())
+        # self.wfile.write(b"qweqew\n")
+        self.wfile.write(self.get_page())
 
     def get_page(self):
         res = BytesIO()
@@ -24,8 +24,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 port = int(sys.argv[1])
 print("starting server on " + str(port))
-for i in range(5):
-    print("qe" * 10)
-httpd = HTTPServer(('localhost', port), SimpleHTTPRequestHandler)
+
+httpd = HTTPServer(('0.0.0.0', port), SimpleHTTPRequestHandler)
 httpd.serve_forever()
 
